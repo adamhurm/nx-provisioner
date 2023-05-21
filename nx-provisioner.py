@@ -58,9 +58,6 @@ def parse_args():
     return args
 
 def create_folder_structure():
-    # Delete drag-n-drop folder
-    rm_tree('./drag-n-drop')
-
     # Create directories
     pathlib.Path('./drag-n-drop/switch/aio-switch-updater', exist_ok=True).mkdir(parents=True, exist_ok=True)
     pathlib.Path('./drag-n-drop/bootloader/payloads', exist_ok=True).mkdir(parents=True, exist_ok=True)
@@ -81,7 +78,7 @@ def create_folder_structure():
 
     # Copy *.nro and *.bin files
     for f in pathlib.Path('./downloads').glob('*.nro'):
-        f.rename(pathlib.Path('./drag-n-drop').joinpath(f.name))
+        f.rename(pathlib.Path('./drag-n-drop/switch').joinpath(f.name))
     for f in pathlib.Path('./downloads').glob('*.bin'):
         f.rename(pathlib.Path('./drag-n-drop/bootloader/payloads').joinpath(f.name))
 
@@ -92,10 +89,11 @@ def main():
     # Check for downloads folder and delete if requested
     args = parse_args()
     if args.clean:
-        rm_tree('./downloads')
-        rm_tree('./drag-n-drop')
-    elif pathlib.Path('./downloads').is_dir() or pathlib.Path('./drag-n-drop'):
+        if pathlib.Path('./downloads').is_dir(): rm_tree('./downloads')
+        if pathlib.Path('./drag-n-drop').is_dir(): rm_tree('./drag-n-drop')
+    elif pathlib.Path('./downloads').is_dir() or pathlib.Path('./drag-n-drop').is_dir():
         print('You have already downloaded packages, run again with --clean if you wish to delete them.')
+        return
 
     # Create downloads directory and download packages
     pathlib.Path('./downloads', exist_ok=True).mkdir(parents=True, exist_ok=True)
@@ -103,7 +101,8 @@ def main():
         download_package(repo)
 
     create_folder_structure()
-
+    print('Packages downloaded and sorted.\n\n'
+          'Open drag-n-drop directory and drag all of the contents to the Switch microSD card.')
 
 if __name__ == "__main__":
     main()

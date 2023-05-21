@@ -1,0 +1,27 @@
+# NX Provisioner
+
+## Quickstart
+```
+$ pip install requests bs4
+$ python3 nx-provisioner.py
+```
+
+## Projects
+
+### Bootloader and CFW
+
+- [hekate](https://github.com/CTCaer/hekate)
+
+- [atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
+
+
+### Switch Applications
+
+| Application | Description |
+|-------------|-------------|
+| [AIOSwitchUpdater](https://github.com/HamletDuFromage/aio-switch-updater) | Download new firmware, cheat codes, etc. |
+| [Goldleaf](https://github.com/XorTroll/Goldleaf) | Multipurpose homebrew tool. Delete pending firmware updates. |
+| [JKSV](https://github.com/J-D-K/JKSV) | Dump game saves |
+| [nxDumpTool](https://github.com/DarkMatterCore/nxdumptool) | Dump physical cartridges |
+| [Tinfoil](https://github.com/tiliarou/tinfoil-1) | Switch title manager. Install games from physical cartridge and manage patches |
+| [90DNS Tester](https://github.com/meganukebmp/Switch_90DNS_tester) | Confirm DNS resolution is blocked for nintendo domains |

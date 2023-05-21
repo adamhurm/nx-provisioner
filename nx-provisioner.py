@@ -10,7 +10,8 @@ package_names = [
     'J-D-K/JKSV',
     'DarkMatterCore/nxdumptool',
     'meganukebmp/Switch_90DNS_tester',
-    'suchmememanyskill/TegraExplorer'
+    'suchmememanyskill/TegraExplorer',
+    'tiliarou/tinfoil-1'
 ]
 
 def get_package(repo):
@@ -25,16 +26,21 @@ def get_package(repo):
     
     # Fetch URLs for download
     download_locations = [ soup.a.attrs['href'] ]
-    if repo == 'Atmosphere-NX/Atmosphere':
-        download_locations.append(soup.find_all('a')[1]['href']) # Grab fusee.bin too
+    if repo == 'Atmosphere-NX/Atmosphere': # Grab fusee.bin too
+        download_locations.append(soup.find_all('a')[1]['href']) 
 
     return download_locations, tag
 
 def download_package(repo):
+    print(f'Downloading {repo} : {tag}')
+    # Tinfoil does not support releases--hopefully this can be removed at some point
+    if repo == 'tiliarou/tinfoil-1': 
+        urllib.request.urlretrieve('https://github.com/'+repo+'/raw/master/tinfoil.nro',
+                                       './downloads/tinfoil.nro')
+        return
     # Download package
     download_locations, tag = get_package(repo)
-    print(f'Downloading {repo} : {tag}')
-    for download_location in download_locations:    
+    for download_location in download_locations:
         urllib.request.urlretrieve('https://github.com'+download_location,
                                     './downloads/'+re.search('[^/]+$', download_location).group())
 

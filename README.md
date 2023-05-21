@@ -6,6 +6,11 @@ $ pip install requests bs4
 $ python3 nx-provisioner.py
 ```
 
+Open `drag-n-drop` directory and drag all of the contents to the Switch microSD card.
+
+<br>
+<br>
+
 ## Projects
 
 ### Bootloader and CFW

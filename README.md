@@ -1,5 +1,9 @@
 # NX Provisioner
 
+Quickly provision a modded switch with the newest bootloader, CFW, applications, and payloads. For a list of everything that is downloaded, see the [Projects](#Projects) section below.
+
+<br>
+
 ## Quickstart
 ```
 $ pip install requests bs4
@@ -8,7 +12,6 @@ $ python3 nx-provisioner.py
 
 Open `drag-n-drop` directory and drag all of the contents to the Switch microSD card.
 
-<br>
 <br>
 
 ## Projects

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, pathlib, re, requests, urllib, zipfile
+import argparse, glob, pathlib, re, requests, urllib, zipfile
 from bs4 import BeautifulSoup
 
 package_names = [
@@ -74,11 +74,11 @@ def create_folder_structure():
         zip_ref.extractall('./drag-n-drop')
 
     # Unzip Atmosphere package
-    with zipfile.ZipFile('./downloads/atmosphere-1.5.4-prerelease-3cb54e2b4+hbl-2.4.3+hbmenu-3.5.1.zip', 'r') as zip_ref:
+    with zipfile.ZipFile(glob.glob('./downloads/atmosphere*.zip')[0], 'r') as zip_ref:
         zip_ref.extractall('./drag-n-drop')
 
     # Unzip hekate package
-    with zipfile.ZipFile('./downloads/hekate_ctcaer_6.0.4_Nyx_1.5.3.zip', 'r') as zip_ref:
+    with zipfile.ZipFile(glob.glob('./downloads/hekate*.zip')[0], 'r') as zip_ref:
         zip_ref.extractall('./drag-n-drop')
     for f in pathlib.Path('./drag-n-drop').glob('hekate*.bin'):
         f.rename(pathlib.Path('./drag-n-drop/bootloader/payloads').joinpath(f.name))

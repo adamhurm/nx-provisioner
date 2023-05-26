@@ -32,14 +32,15 @@ def get_package(repo):
     return download_locations, tag
 
 def download_package(repo):
-    print(f'Downloading {repo} : {tag}')
     # Tinfoil does not support releases--hopefully this can be removed at some point
     if repo == 'tiliarou/tinfoil-1': 
         urllib.request.urlretrieve('https://github.com/'+repo+'/raw/master/tinfoil.nro',
                                        './downloads/tinfoil.nro')
+        print(f'Downloading {repo} : latest')
         return
     # Download package
     download_locations, tag = get_package(repo)
+    print(f'Downloading {repo} : {tag}')
     for download_location in download_locations:
         urllib.request.urlretrieve('https://github.com'+download_location,
                                     './downloads/'+re.search('[^/]+$', download_location).group())

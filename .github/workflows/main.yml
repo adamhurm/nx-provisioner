@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test-run:
-    name: test-run
+    name: run-script
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -30,3 +30,8 @@ jobs:
       env:
         SCRIPT_STDOUT: ${{ steps.script.outputs.stdout }}
         SCRIPT_STDERR: ${{ steps.script.outputs.stderr }} 
+    - name: Upload drag-n-drop folder
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ github.event.head_commit.message }} 
+        path: drag-n-drop

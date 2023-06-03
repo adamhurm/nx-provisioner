@@ -2,6 +2,8 @@
 
 Quickly provision a modded switch with the newest bootloader, CFW, applications, and payloads. For a list of everything that is downloaded, see the [Projects](#Projects) section below.
 
+Check the GitHub Actions page artifact for releases I have tested.
+
 <br>
 
 ## Quickstart
